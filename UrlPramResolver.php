@@ -38,9 +38,10 @@ class UrlPramResolver
 			
 			//下一占位符处理前，将索引移至占位符起始位置：移动距离为分隔符的长度
             $split = $this->getNextSplit();
-            if ($split === FALSE) {
+            if ($split === FALSE || $split["split_type"] == "END") {
                 return FALSE;
             }
+
             $this->curUrlIndex += $split["split_len"];
             $this->curModelIndex += $split["split_len"];
 
@@ -77,23 +78,27 @@ class UrlPramResolver
             //占位符为value: 取出uri中该参数的值
             } else {
 				$cur_key = substr($flag["flag"],0,$key_len - 6);
-				
+
 				//获取参数值下一分隔符
 				$split = $this->getNextSplit();
-				if ($split === FALSE) {
-					return FALSE;
-				}
 
-				//当分隔符为字符串时，参数值为当前索引与下一分隔符之间的字符串
-                if ($split["split_type"] == "STR") {
+                //当分隔符为末尾时(结尾为`}`),参数为当前位置到结尾
+                if ($split["split_type"] == "END") {
+                    $params[$cur_key] = str_replace("/","",substr($this->urlStr,$this->curUrlIndex));
+                    break;
 
+                //当分隔符为字符串时，参数值为当前索引与下一分隔符之间的字符串
+                }else if ($split["split_type"] == "STR") {
                     $value_end = strpos($this->urlStr,$split["split_str"],$this->curUrlIndex);
-                    $value = substr($this->urlStr,$this->curUrlIndex,$value_end - $this->curUrlIndex);
-                    $params[$cur_key] = $value;
-				
+                    if ($value_end === FALSE && $split["split_str"] == "/"){
+                        $params[$cur_key] = substr($this->urlStr,$this->curUrlIndex);
+                    }else {
+                        $params[$cur_key] = substr($this->urlStr,$this->curUrlIndex,$value_end - $this->curUrlIndex);
+                    }
+
 				//当分隔符为空(split_type=NONE)时,参数值为当前索引与下一参数key之间的字符串
                 } else {
-                    $value_end = 0;
+                    $value_end = FALSE;
 					/**
 					*	确定下一参数key：由于key是顺序的,遇到第一个匹配的即当前值的结束
 					*   这里考虑到下一参数可能没有,需要遍历key数组确定下一key
@@ -114,9 +119,7 @@ class UrlPramResolver
                         }
                     }
 
-                    $value = substr($this->urlStr,$this->curUrlIndex,$value_end - $this->curUrlIndex);
-
-                    $params[$cur_key] = $value;
+                    $params[$cur_key] = substr($this->urlStr,$this->curUrlIndex,$value_end - $this->curUrlIndex);
                 }
 				
 				//参数值处理完，移动索引至当前参数值结尾处
@@ -174,18 +177,23 @@ class UrlPramResolver
      */
     private function getNextSplit() {
         $data = array();
-        $next_flag_start_pos = strpos($this->urlModel,"{",$this->nextSplitStartPos);
-        if ($next_flag_start_pos === FALSE) {
-            $data["split_type"] = "STR";
-            $data["split_str"] = substr($this->urlModel,$this->nextSplitStartPos);
-            $data["split_len"] = strlen($this->urlModel) - $this->nextSplitStartPos;
-        } else if ($next_flag_start_pos - $this->nextSplitStartPos == 0){
-            $data["split_type"] = "NONE";
-            $data["split_len"] = 0;
-        } else {
-            $data["split_type"] = "STR";
-            $data["split_len"] = $next_flag_start_pos - $this->nextSplitStartPos;
-            $data["split_str"] = substr($this->urlModel,$this->nextSplitStartPos,$data["split_len"]);
+        if (strlen($this->urlModel) == $this->nextSplitStartPos){
+            $data["split_type"] = "END";
+        }else{
+            $next_flag_start_pos = strpos($this->urlModel,"{",$this->nextSplitStartPos);
+
+            if ($next_flag_start_pos === FALSE) {
+                $data["split_type"] = "STR";
+                $data["split_str"] = substr($this->urlModel,$this->nextSplitStartPos);
+                $data["split_len"] = strlen($this->urlModel) - $this->nextSplitStartPos;
+            } else if ($next_flag_start_pos - $this->nextSplitStartPos == 0){
+                $data["split_type"] = "NONE";
+                $data["split_len"] = 0;
+            } else {
+                $data["split_type"] = "STR";
+                $data["split_len"] = $next_flag_start_pos - $this->nextSplitStartPos;
+                $data["split_str"] = substr($this->urlModel,$this->nextSplitStartPos,$data["split_len"]);
+            }
         }
         return $data;
     }

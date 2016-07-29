@@ -26,7 +26,7 @@ var_dump($params);
 
 echo "\r\n";
 
-$uri_model = "/project/detail/t-{id-value}/";
+$uri_model = "/project/detail/t-{id-value}";
 $uri_str = "/project/detail/t-123/";
 
 echo "uri模版: ".$uri_model."\r\n";
