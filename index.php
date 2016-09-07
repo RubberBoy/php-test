@@ -3,37 +3,49 @@ header("Content-Type:text/html;charset=utf-8");
 
 include("UrlPramResolver.php");
 
-$uri_model = "/manager/aa{p}{pzgz-value}{f}{flly-value}{q}{qt-value}{b}{bzfy-value}{z}{zsgd-value}{s}{s-value}{x}{x-value}{y}{y-value}/{page-value}/";
-$uri_str = "/manager/aap123q123b432x0y1/123/\r\n";
+$uri_model = "manager/list/{p}{pzlx-value}{f}{flly-value}{q}{qt-value}{b}{bzfy-value}{z}{zsgd-value}{s}{sgsl-value}{x}{sort-value}{y}{y-value}/{m-page-value}";
+$uri_str = "manager/list/p76y12";
 
 echo "uri模版: ".$uri_model."\r\n";
 echo "uri_str: ".$uri_str."\r\n";
-$UrlPramResolver = new UrlPramResolver($uri_model,$uri_str);
+$UrlPramResolver = new UrlPramResolver(array("urlModel"=>$uri_model,"urlStr"=>$uri_str));
 
-$params = $UrlPramResolver->getUrlParams();
+$params = $UrlPramResolver->getRequestParams();
+echo "requestParams:\r\n";
 var_dump($params);
+
+echo "methodParams:\r\n";
+$params = $UrlPramResolver->getMethodParams();
+var_dump($params);
+
+var_dump($UrlPramResolver->getParamNames());
 
 echo "\r\n";
 
-$uri_model = "/manager/aa-{p}-{p-value}{f}-{f-value}{q}-{q-value}{b}-{b-value}{z}-{z-value}{s}-{s-value}{x}-{x-value}{y}-{y-value}/{page-value}/";
-$uri_str = "/manager/aa-p-123q-123b-432x-88/123/\r\n";
-
-echo "uri模版: ".$uri_model."\r\n";
-echo "uri_str: ".$uri_str."\r\n";
-$UrlPramResolver = new UrlPramResolver($uri_model,$uri_str);
-$params = $UrlPramResolver->getUrlParams();
-var_dump($params);
-
-echo "\r\n";
-
-$uri_model = "/project/detail/t-{id-value}";
-$uri_str = "/project/detail/t-123/";
-
-echo "uri模版: ".$uri_model."\r\n";
-echo "uri_str: ".$uri_str."\r\n";
-$UrlPramResolver = new UrlPramResolver($uri_model,$uri_str);
-$params = $UrlPramResolver->getUrlParams();
-var_dump($params);
+//$uri_model = "/manager/list/{p}{pzlx-value}-{f}{flly-value}-{q}{qt-value}-{b}{bzfy-value}-{z}{zsgd-value}-{s}{sgsl-value}-{x}{sort-value}-{y}{y-value}/{m-page-value}/";
+//$uri_str = "/manager/list/p123-q234/1/";
+//
+//echo "uri模版: ".$uri_model."\r\n";
+//echo "uri_str: ".$uri_str."\r\n";
+//$UrlPramResolver = new UrlPramResolver(array("urlModel"=>$uri_model,"urlStr"=>$uri_str));
+//$params = $UrlPramResolver->getRequestParams();
+//echo "requestParams:\r\n";
+//var_dump($params);
+//
+//echo "methodParams:\r\n";
+//$params = $UrlPramResolver->getMethodParams();
+//var_dump($params);
+//
+//echo "\r\n";
+//
+//$uri_model = "/project/detail/t-{id-value}";
+//$uri_str = "/project/detail/t-123/";
+//
+//echo "uri模版: ".$uri_model."\r\n";
+//echo "uri_str: ".$uri_str."\r\n";
+//$UrlPramResolver = new UrlPramResolver(array("urlModel"=>$uri_model,"urlStr"=>$uri_str));
+//$params = $UrlPramResolver->getUrlParams();
+//var_dump($params);
 
 
 #$preg_str = "/\\/manager\\/(p.*)(q.*)(b.*)(z.*)?/";
