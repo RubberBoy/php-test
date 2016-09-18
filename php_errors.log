@@ -1,0 +1,38 @@
+[07-Sep-2016 18:41:03 PRC] XDebug could not open the remote debug file '/private/var/log/apache2/xdebug.log'.
+[08-Sep-2016 15:36:42 PRC] XDebug could not open the remote debug file '/private/var/log/apache2/xdebug.log'.
+[08-Sep-2016 15:36:51 PRC] XDebug could not open the remote debug file '/private/var/log/apache2/xdebug.log'.
+[08-Sep-2016 15:37:16 PRC] XDebug could not open the remote debug file '/private/var/log/apache2/xdebug.log'.
+[08-Sep-2016 15:39:07 PRC] XDebug could not open the remote debug file '/private/var/log/apache2/xdebug.log'.
+[08-Sep-2016 15:39:45 PRC] XDebug could not open the remote debug file '/private/var/log/apache2/xdebug.log'.
+[09-Sep-2016 14:06:55 PRC] XDebug could not open the remote debug file '/private/var/log/apache2/xdebug.log'.
+[09-Sep-2016 14:07:05 PRC] XDebug could not open the remote debug file '/private/var/log/apache2/xdebug.log'.
+[09-Sep-2016 14:07:05 PRC] PHP Notice:  Use of undefined constant method - assumed 'method' in /Users/gaosheng/project/test/function.php on line 19
+[09-Sep-2016 14:07:05 PRC] PHP Stack trace:
+[09-Sep-2016 14:07:05 PRC] PHP   1. {main}() /Users/gaosheng/project/test/function.php:0
+[09-Sep-2016 14:07:40 PRC] XDebug could not open the remote debug file '/private/var/log/apache2/xdebug.log'.
+[09-Sep-2016 14:07:50 PRC] XDebug could not open the remote debug file '/private/var/log/apache2/xdebug.log'.
+[09-Sep-2016 14:09:00 PRC] XDebug could not open the remote debug file '/private/var/log/apache2/xdebug.log'.
+[09-Sep-2016 14:09:00 PRC] PHP Fatal error:  Call to undefined function type() in /Users/gaosheng/project/test/function.php on line 19
+[09-Sep-2016 14:09:00 PRC] PHP Stack trace:
+[09-Sep-2016 14:09:00 PRC] PHP   1. {main}() /Users/gaosheng/project/test/function.php:0
+[09-Sep-2016 14:10:31 PRC] XDebug could not open the remote debug file '/private/var/log/apache2/xdebug.log'.
+[09-Sep-2016 14:10:41 PRC] XDebug could not open the remote debug file '/private/var/log/apache2/xdebug.log'.
+[09-Sep-2016 14:13:15 PRC] XDebug could not open the remote debug file '/private/var/log/apache2/xdebug.log'.
+[09-Sep-2016 14:13:41 PRC] XDebug could not open the remote debug file '/private/var/log/apache2/xdebug.log'.
+[09-Sep-2016 14:14:03 PRC] XDebug could not open the remote debug file '/private/var/log/apache2/xdebug.log'.
+[09-Sep-2016 14:14:03 PRC] PHP Catchable fatal error:  Object of class Closure could not be converted to string in /Users/gaosheng/project/test/function.php on line 21
+[09-Sep-2016 14:14:03 PRC] PHP Stack trace:
+[09-Sep-2016 14:14:03 PRC] PHP   1. {main}() /Users/gaosheng/project/test/function.php:0
+[09-Sep-2016 14:14:17 PRC] XDebug could not open the remote debug file '/private/var/log/apache2/xdebug.log'.
+[09-Sep-2016 14:25:50 PRC] XDebug could not open the remote debug file '/private/var/log/apache2/xdebug.log'.
+[09-Sep-2016 14:25:50 PRC] PHP Warning:  Missing argument 1 for {closure}(), called in /Users/gaosheng/project/test/function.php on line 34 and defined in /Users/gaosheng/project/test/function.php on line 14
+[09-Sep-2016 14:25:50 PRC] PHP Stack trace:
+[09-Sep-2016 14:25:50 PRC] PHP   1. {main}() /Users/gaosheng/project/test/function.php:0
+[09-Sep-2016 14:25:50 PRC] PHP   2. {closure:/Users/gaosheng/project/test/function.php:14-29}() /Users/gaosheng/project/test/function.php:34
+[09-Sep-2016 14:25:50 PRC] PHP Notice:  Undefined variable: rate in /Users/gaosheng/project/test/function.php on line 16
+[09-Sep-2016 14:25:50 PRC] PHP Stack trace:
+[09-Sep-2016 14:25:50 PRC] PHP   1. {main}() /Users/gaosheng/project/test/function.php:0
+[09-Sep-2016 14:25:50 PRC] PHP   2. {closure:/Users/gaosheng/project/test/function.php:14-29}() /Users/gaosheng/project/test/function.php:34
+[09-Sep-2016 14:26:08 PRC] XDebug could not open the remote debug file '/private/var/log/apache2/xdebug.log'.
+[09-Sep-2016 14:26:24 PRC] XDebug could not open the remote debug file '/private/var/log/apache2/xdebug.log'.
+[12-Sep-2016 15:51:07 PRC] XDebug could not open the remote debug file '/private/var/log/apache2/xdebug.log'.
