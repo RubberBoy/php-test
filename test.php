@@ -9,13 +9,10 @@ $sub = mb_substr($str, 0, 2, "utf-8");
 var_dump($str);
 var_dump($sub);
 
-$scoreItem = array("Deco_CreditRecord_Role" => "Designer",
-    "Deco_CreditRecord_PartyId" => "de",
-    "Deco_CreditRecord_ProjectId" => "pr",
-    "Deco_CreditRecord_Credit" => "c",
-    "Deco_CreditRecord_Reason" => "r",
-    "Deco_CreditRecord_Resource" => 'd',
-    "Deco_CreditRecord_ReasonName" => 'b',
-    "Deco_CreditRecord_CrtTime" => date('Y-m-d H:i:s'));
+$url = "http://api.3kongjian.com/leader/recode";
+$url = str_replace('api.3kongjian.com', '3kjapidev.sinaapp.com', $url);
 
-var_dump($scoreItem);
+var_dump($url);
+
+$index = strpos("design_new/aaa", "bb");
+var_dump($index);
